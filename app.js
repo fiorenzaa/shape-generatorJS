@@ -1,5 +1,5 @@
 const character = "#";
-const count = 12;
+const count = 8;
 // count constraint: harus genap
 
 
@@ -98,16 +98,53 @@ function segiDelapan(rowCount) {
 function belahKetupat(rowCount) {
   let rows = [];
   let j = rowCount / 2;
+  let l = rowCount / 2 - 3;
   let k = 1;
 
   for (i = 1; i < rowCount; i++) {
     if (i <= rowCount / 2) {
       rows.push(" ".repeat(rowCount / 2 - i) + character.repeat(2 * i - 1) + " ".repeat(rowCount / 2 - i))
     } else {
-      rows.push(" ".repeat(k) + character.repeat(j + 1) + " ".repeat(k))
-      j = j - 1;
+      rows.push(" ".repeat(k) + character.repeat(j + l) + " ".repeat(k))
+      j = j - 2;
       k++;
     }
+  }
+  return rows;
+}
+
+function heart(rowCount){
+  let rows = [];
+  let j = rowCount/2;
+  let k = 1;
+
+  for (let i = 1; i <= rowCount; i++){
+    if (i <= rowCount * 1/3){
+      rows.unshift(" ".repeat(j-i) + character.repeat(i)+" ".repeat(j-i) + character.repeat(i))
+    } else {
+      rows.unshift(" ".repeat(rowCount - k) + character.repeat(2 * k - 1) + " ".repeat(rowCount - k))
+      k++;
+    }
+  }
+  return rows;
+}
+
+function jajaranGenjang(rowCount) {
+  let rows = [];
+
+  for (let i = 0; i < rowCount; i++){
+    rows.unshift(" ".repeat(i) + character.repeat(rowCount * 2))
+  }
+  return rows;
+}
+
+function trapesium(rowCount) {
+  let rows = [];
+  let j = rowCount * 3
+  
+  for (let i = 0; i < rowCount; i++) {
+    rows.unshift(" ".repeat(i) + character.repeat(j) + " ".repeat(i))
+    j = j - 2
   }
   return rows;
 }
@@ -131,7 +168,10 @@ async function showShapes() {
   // await animateShape(segiEnam(count));
   // await animateShape(segiDelapan(count));
   // await animateShape(segiLima(count));
-  await animateShape(belahKetupat(count));
+  // await animateShape(belahKetupat(count));
+  // await animateShape(jajaranGenjang(count));
+  // await animateShape(trapesium(count));
+  await animateShape(heart(count));
 }
 
 showShapes();
