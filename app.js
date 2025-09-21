@@ -51,7 +51,7 @@ function segiLima(rowCount) {
     if (i === 1) {
       rows.push(" ".repeat(Math.floor(baseWidth / 2) - 1) + character.repeat(i + 1) + " ".repeat(baseWidth / 2));
     } else if (i <= (Math.floor(rowCount / 2))) {
-      rows.push(" ".repeat(rowCount - i * 2) + character.repeat(4 * i) + " ".repeat(rowCount - i));
+      rows.push(" ".repeat(rowCount - i * 2) + character.repeat(4 * i));
     } else {
       rows.push(" ".repeat(j) + character.repeat(baseWidth - j * 2) + " ".repeat(j))
       j++;
