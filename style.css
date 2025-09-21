@@ -1,0 +1,44 @@
+*{
+  background-color: rgb(29, 47, 63);
+}
+
+.dropdown-menu,
+.dropdown-menu * {
+  background-color: white !important;
+  color: black !important;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background-color: #e8e7e7 !important; /* abu muda */
+  color: black !important;
+}
+
+.dropdown{
+  margin: 3rem 0;
+}
+
+.custom-dropdown{
+  max-height: 200px;     
+  overflow-y: auto; 
+}
+
+.shape-container{
+  font-family: monospace;   /* biar karakter rata */
+  white-space: pre;          /* biar spasi & newline kebaca */
+  background-color: rgb(20, 32, 42);
+  color: rgb(255, 255, 255);
+  padding: 5rem;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+}
+
+.shape-display{
+  height: 25rem;
+  background-color: rgb(20, 32, 42);
+  display: flex;
+  justify-content: center;
+  margin: 0 3rem;
+  border-radius: 10px;
+}

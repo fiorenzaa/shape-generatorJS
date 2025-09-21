@@ -5,9 +5,43 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shapify</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet"> -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 
 <body>
+  <div class="option-container">
+    <div class="dropdown-container">
+      <div class="dropdown text-center">
+        <button class="btn btn-info dropdown-toggle col-6" type="button" data-bs-toggle="dropdown" id="shapeDropdown">
+          Pilih Bangun Datar
+        </button>
+        <ul class="dropdown-menu custom-dropdown col-6" >
+          <li><a class="dropdown-item" href="#" data-shape="segitiga">Segitiga</a></li>
+          <li><a class="dropdown-item" href="#" data-shape="persegi">Persegi</a></li>
+          <li><a class="dropdown-item" href="#" data-shape="persegiPanjang">Persegi Panjang</a></li>
+          <li><a class="dropdown-item" href="#" data-shape="segiLima">Segi Lima</a></li>
+          <li><a class="dropdown-item" href="#" data-shape="segiEnam">Segi Enam</a></li>
+          <li><a class="dropdown-item" href="#" data-shape="segiDelapan">Segi Delapan</a></li>
+          <li><a class="dropdown-item" href="#" data-shape="belahKetupat">Belah Ketupat</a></li>
+          <li><a class="dropdown-item" href="#" data-shape="jajaranGenjang">Jajaran Genjang</a></li>
+          <li><a class="dropdown-item" href="#" data-shape="trapesium">Trapesium</a></li>
+          <li><a class="dropdown-item" href="#" data-shape="heart">Heart</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="shape-display">
+      <div id="shapeContainer" class="shape-container">
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
   <script src="app.js"></script>
 </body>
 

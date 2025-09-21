@@ -1,4 +1,5 @@
 const character = "#";
+// const character = '<i class="bi bi-circle-fill"></i>';
 const count = 8;
 // count constraint: harus genap
 
@@ -27,16 +28,16 @@ function segitiga(rowCount) {
 // fungsi bikin kotak
 function kotak(rowCount) {
   let rows = [];
-  for (let i = 0; i <= rowCount; i++) {
-    rows.push(character.repeat(rowCount));
+  for (let i = 1; i < rowCount; i++) {
+    rows.push(character.repeat(rowCount * 2));
   }
   return rows;
 }
 
 function persegiPanjang(rowCount) {
   let rows = [];
-  for (let i = 0; i <= rowCount; i++) {
-    rows.push(character.repeat(rowCount * 2));
+  for (let i = 1; i < rowCount; i++) {
+    rows.push(character.repeat(rowCount * 3));
   }
   return rows;
 }
@@ -160,18 +161,61 @@ function heart(rowCount) {
   return rows;
 }
 
-// fungsi utama: ganti-ganti bentuk
-async function showShapes() {
-  // await animateShape(segitiga(count));
-  // await animateShape(kotak(count));
-  // await animateShape(persegiPanjang(count));
-  // await animateShape(segiEnam(count));
-  // await animateShape(segiDelapan(count));
-  // await animateShape(segiLima(count));
-  // await animateShape(belahKetupat(count));
-  await animateShape(jajaranGenjang(count));
-  // await animateShape(trapesium(count));
-  // await animateShape(heart(count));
+async function animateShape(rows, container) {
+  container.textContent = ""; // kosongkan dulu
+  for (let row of rows) {
+    container.textContent += row + "\n";
+    await new Promise(r => setTimeout(r, 200)); // jeda 200ms
+  }
 }
 
-showShapes();
+const container = document.getElementById("shapeContainer");
+const dropdownButton = document.getElementById("shapeDropdown")
+document.querySelectorAll(".dropdown-item").forEach(item => {
+  item.addEventListener("click", function (e) {
+    e.preventDefault();
+    const shape = this.dataset.shape
+    let rows;
+
+    switch (shape) {
+      case "segitiga":
+        rows = segitiga(count);
+        break;
+      case "persegi":
+        rows = kotak(count);
+        break;
+      case "persegiPanjang":
+        rows = persegiPanjang(count);
+        break;
+      case "segiLima":
+        rows = segiLima(count);
+        break;
+      case "segiEnam":
+        rows = segiEnam(count);
+        break;
+      case "segiDelapan":
+        rows = segiDelapan(count);
+        break;
+      case "belahKetupat":
+        rows = belahKetupat(count);
+        break;
+      case "jajaranGenjang":
+        rows = jajaranGenjang(count);
+        break;
+      case "trapesium":
+        rows = trapesium(count);
+        break;
+      case "heart":
+        rows = heart(count);
+        break;
+      default:
+        rows = segitiga(count);
+    }
+
+    animateShape(rows, container);
+    dropdownButton.innerText = this.innerText;
+  })
+})
+
+animateShape(segitiga(count), container);
+
