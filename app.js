@@ -96,6 +96,7 @@ function segiDelapan(rowCount) {
 }
 
 function belahKetupat(rowCount) {
+  rowCount = rowCount * 1.5
   let rows = [];
   let j = rowCount / 2;
   let l = rowCount / 2 - 3;
@@ -113,26 +114,10 @@ function belahKetupat(rowCount) {
   return rows;
 }
 
-function heart(rowCount){
-  let rows = [];
-  let j = rowCount/2;
-  let k = 1;
-
-  for (let i = 1; i <= rowCount; i++){
-    if (i <= rowCount * 1/3){
-      rows.unshift(" ".repeat(j-i) + character.repeat(i)+" ".repeat(j-i) + character.repeat(i))
-    } else {
-      rows.unshift(" ".repeat(rowCount - k) + character.repeat(2 * k - 1) + " ".repeat(rowCount - k))
-      k++;
-    }
-  }
-  return rows;
-}
-
 function jajaranGenjang(rowCount) {
   let rows = [];
 
-  for (let i = 0; i < rowCount; i++){
+  for (let i = 0; i < rowCount; i++) {
     rows.unshift(" ".repeat(i) + character.repeat(rowCount * 2))
   }
   return rows;
@@ -141,7 +126,7 @@ function jajaranGenjang(rowCount) {
 function trapesium(rowCount) {
   let rows = [];
   let j = rowCount * 3
-  
+
   for (let i = 0; i < rowCount; i++) {
     rows.unshift(" ".repeat(i) + character.repeat(j) + " ".repeat(i))
     j = j - 2
@@ -160,6 +145,21 @@ async function animateShape(rows) {
   }
 }
 
+function heart(rowCount) {
+  let rows = [];
+  let j = rowCount / 2;
+  let k = rowCount;
+
+  for (let i = 2; i <= j; i++) {
+    rows.push(" ".repeat(j - i) + character.repeat(2 * i - 1) + " ".repeat(2 * (j - i) + 1) + character.repeat(2 * i - 1))
+  }
+  for (let i = 0; i < rowCount; i++) {
+    rows.push(" ".repeat(i) + character.repeat(2 * k - 1) + " ".repeat(i))
+    k--;
+  }
+  return rows;
+}
+
 // fungsi utama: ganti-ganti bentuk
 async function showShapes() {
   // await animateShape(segitiga(count));
@@ -169,9 +169,9 @@ async function showShapes() {
   // await animateShape(segiDelapan(count));
   // await animateShape(segiLima(count));
   // await animateShape(belahKetupat(count));
-  // await animateShape(jajaranGenjang(count));
+  await animateShape(jajaranGenjang(count));
   // await animateShape(trapesium(count));
-  await animateShape(heart(count));
+  // await animateShape(heart(count));
 }
 
 showShapes();
